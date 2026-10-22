@@ -13,7 +13,7 @@ npm run dev
 
 1. Öppna `src/config.js` och fyll i `ca`, `x`, `telegram` (och `site` när domänen finns).
    - Sticky-lappen, start-menyn, buy-knappen och "network"-fönstret (live mcap/köp/sälj från Dexscreener) läser därifrån.
-2. I `index.html`: byt `/og.jpg` mot full url (`https://dindomän/og.jpg`) så X visar kortet.
+2. Domän: https://www.plugoffline.fun (inlagd i config.js och som og-bild i index.html).
 3. Pusha → Vercel (Framework: Vite, build `npm run build`, output `dist`).
 
 ## Vad finns var

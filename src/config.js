@@ -6,7 +6,7 @@ export const CONFIG = {
   x: '',           // https://x.com/...
   telegram: '',    // https://t.me/...
   dexscreener: '', // valfri: egen chart-länk. Tom = byggs från CA
-  site: '',        // https://dindomän.xyz — används i share-on-X-texten
+  site: 'https://www.plugoffline.fun', // används i share-on-X-texten
 };
 
 export const buyUrl = () => (CONFIG.ca ? `https://pump.fun/coin/${CONFIG.ca}` : '');

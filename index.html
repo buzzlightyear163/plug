@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>$PLUG · the plug got unplugged.</title>
+  <meta name="description" content="the plug got unplugged. a network cable on your desktop. still offline." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="$PLUG" />
+  <meta property="og:description" content="the plug got unplugged." />
+  <!-- byt /og.jpg till full url (https://dindomän/og.jpg) när domänen finns — X vill ha absolut länk -->
+  <meta property="og:image" content="/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="$PLUG" />
+  <meta name="twitter:description" content="the plug got unplugged." />
+  <meta name="twitter:image" content="/og.jpg" />
+  <meta name="theme-color" content="#245edb" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="/img/plug-sleep-sm.webp" />
+</head>
+<body>
+  <!-- ── boot ─────────────────────────────────────────────── -->
+  <div id="boot" class="boot" role="dialog" aria-label="plug is starting">
+    <div class="boot-inner">
+      <div class="boot-face">
+        <img id="faceSleep" src="/img/plug-sleep-sm.webp" alt="" />
+        <img id="faceHappy" src="/img/plug-happy-sm.webp" alt="" class="off" />
+        <img id="faceSide" src="/img/plug-side-sm.webp" alt="" class="off" />
+      </div>
+      <div class="boot-logo" aria-label="plug"><span>plug</span></div>
+      <div class="boot-bar" id="bootBar"><div class="boot-blocks"><i></i><i></i><i></i></div></div>
+      <p class="boot-msg" id="bootMsg">obtaining network address…</p>
+      <button class="boot-btn" id="plugIn" hidden>
+        <img src="/img/ico-network.webp" alt="" /><span>plug in</span>
+      </button>
+      <p class="boot-hint" id="bootHint" hidden>or press enter</p>
+    </div>
+    <button class="boot-skip" id="skip" hidden>skip ›</button>
+  </div>
+
+  <!-- ── desktop ──────────────────────────────────────────── -->
+  <main id="desktop" class="desktop" hidden>
+    <ul class="icons" id="icons" aria-label="desktop">
+      <li><button class="icon" data-open="pfp"><img src="/img/ico-plug.webp" alt="" draggable="false" /><span>plug.exe</span></button></li>
+      <li><button class="icon" data-open="memes"><img src="/img/ico-folder.webp" alt="" draggable="false" /><span>memes</span></button></li>
+      <li><button class="icon" data-open="readme"><img src="/img/ico-notepad.webp" alt="" draggable="false" /><span>readme.txt</span></button></li>
+      <li><button class="icon" data-open="network"><img src="/img/ico-network.webp" alt="" draggable="false" /><span>network</span></button></li>
+      <li><button class="icon" data-open="bin"><img src="/img/ico-bin.webp" alt="" draggable="false" /><span>recycle bin</span></button></li>
+    </ul>
+
+    <div class="mark" aria-hidden="true">
+      <b>plug</b>
+      <small>the plug got unplugged.</small>
+    </div>
+
+    <button class="sticky" id="sticky" aria-label="copy contract address">
+      <span class="st-h">ca <em>(don't lose this)</em></span>
+      <code id="caText"></code>
+      <span class="st-s" id="caSub"></span>
+    </button>
+
+    <div class="plug" id="plug">
+      <button class="plug-hit" id="plugHit" aria-label="plug properties"></button>
+      <img id="plugImg" src="/img/plug-side.webp" alt="plug, an ethernet cable, side-eyeing you" draggable="false" />
+      <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+    </div>
+
+    <div id="windows"></div>
+
+    <div class="balloon" id="balloon" hidden>
+      <button class="bl-x" aria-label="close">×</button>
+      <strong><img src="/img/ico-warn.webp" alt="" />network cable unplugged</strong>
+      <p>a network cable is unplugged.<br /><span>(it's him.)</span></p>
+    </div>
+
+    <div class="vol" id="vol" hidden>
+      <span>volume</span>
+      <input type="range" id="volRange" min="0" max="100" aria-label="volume" />
+      <label><input type="checkbox" id="volMute" /> mute</label>
+    </div>
+
+    <nav class="startmenu" id="startmenu" hidden aria-label="start menu">
+      <header class="sm-head"><img src="/img/ico-plug.webp" alt="" /><b>plug</b><small>offline</small></header>
+      <div class="sm-cols">
+        <ul class="sm-left">
+          <li><a class="sm-item big" data-link="buy"><img src="/img/ico-plug.webp" alt="" /><span><b>buy $plug</b><small>pump.fun</small></span></a></li>
+          <li><a class="sm-item big" data-link="chart"><img src="/img/ico-network.webp" alt="" /><span><b>chart</b><small>dexscreener</small></span></a></li>
+          <li><button class="sm-item big" data-act="copyca"><img src="/img/ico-notepad.webp" alt="" /><span><b>copy ca</b><small id="smCa">no ca yet</small></span></button></li>
+          <li class="sm-sep"></li>
+          <li><a class="sm-item" data-link="x"><span class="glyph">𝕏</span><span>x / twitter</span></a></li>
+          <li><a class="sm-item" data-link="telegram"><span class="glyph tg">➤</span><span>telegram</span></a></li>
+        </ul>
+        <ul class="sm-right">
+          <li><button class="sm-item" data-open="pfp"><img src="/img/ico-plug.webp" alt="" /><span>plug.exe</span></button></li>
+          <li><button class="sm-item" data-open="memes"><img src="/img/ico-folder.webp" alt="" /><span>memes</span></button></li>
+          <li><button class="sm-item" data-open="readme"><img src="/img/ico-notepad.webp" alt="" /><span>readme.txt</span></button></li>
+          <li><button class="sm-item" data-open="network"><img src="/img/ico-network.webp" alt="" /><span>network</span></button></li>
+          <li class="sm-sep"></li>
+          <li><button class="sm-item" data-open="disclaimer"><img src="/img/ico-warn.webp" alt="" /><span>disclaimer.txt</span></button></li>
+          <li><button class="sm-item" data-act="help"><img class="sm-help" alt="" /><span>help</span></button></li>
+        </ul>
+      </div>
+      <footer class="sm-foot">
+        <button data-act="logoff"><i class="k"></i>log off</button>
+        <button data-act="off"><i class="p"></i>turn off computer</button>
+      </footer>
+    </nav>
+
+    <footer class="taskbar">
+      <button class="start" id="startBtn" aria-expanded="false" aria-controls="startmenu">
+        <img src="/img/ico-plug.webp" alt="" /><span>plug</span>
+      </button>
+      <div class="quick">
+        <a class="tb-buy" data-link="buy">buy $plug</a>
+      </div>
+      <div class="tasks" id="tasks"></div>
+      <div class="tray">
+        <button class="tray-net" id="trayNet" aria-label="network status: unplugged">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="9" height="7" rx="1" fill="#cfe3ff" stroke="#123" stroke-width="1"/><rect x="13" y="11" width="9" height="7" rx="1" fill="#cfe3ff" stroke="#123" stroke-width="1"/><path d="M6.5 11v4h11" fill="none" stroke="#123" stroke-width="1.2"/><circle cx="17" cy="7" r="5" fill="#e2251b" stroke="#7a0a04"/><path d="M14.8 4.8l4.4 4.4M19.2 4.8l-4.4 4.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="tray-snd" id="traySound" aria-label="volume">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z" fill="#f2f2f2" stroke="#123" stroke-width="1"/><path class="w1" d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path class="w2" d="M17.6 6.8a7.4 7.4 0 0 1 0 10.4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path class="mx" d="M15 9l6 6M21 9l-6 6" stroke="#e2251b" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <time id="clock">12:00</time>
+      </div>
+    </footer>
+  </main>
+
+  <noscript><p style="color:#fff;font:14px Tahoma;padding:24px">plug needs javascript. he also needs internet. he has neither.</p></noscript>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

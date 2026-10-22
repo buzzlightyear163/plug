@@ -32,7 +32,7 @@ export const STICKERS = [
   { id: 'stamp', label: 'offline', line: 'official now.' },
   { id: 'bars', label: '0 bars', line: 'accurate.' },
   { id: 'window', label: 'window', line: "framed. can't close it." },
-  { id: 'ticker', label: '$plug', line: 'the ticker. on me. weird.' },
+  { id: 'ticker', label: '$unplug', line: 'the ticker. on me. weird.' },
 ];
 
 const imgCache = new Map();
@@ -199,7 +199,7 @@ function drawSticker(c, id, size) {
     c.restore();
   } else if (id === 'ticker') {
     c.save();
-    const x = 50 * k, y = 54 * k, w = 290 * k, h = 96 * k;
+    const x = 50 * k, y = 54 * k, w = 350 * k, h = 96 * k;
     c.shadowColor = 'rgba(0,0,0,.35)'; c.shadowBlur = 18 * k; c.shadowOffsetY = 6 * k;
     const g = c.createLinearGradient(0, y, 0, y + h);
     g.addColorStop(0, '#5fd35f'); g.addColorStop(0.5, '#2f9e2f'); g.addColorStop(1, '#1d7a1d');
@@ -207,7 +207,7 @@ function drawSticker(c, id, size) {
     c.shadowColor = 'transparent';
     c.fillStyle = '#fff'; c.font = `italic 800 ${62 * k}px ${TITLE}`; c.textBaseline = 'middle'; c.textAlign = 'center';
     c.shadowColor = 'rgba(0,0,0,.4)'; c.shadowOffsetX = 2 * k; c.shadowOffsetY = 2 * k;
-    c.fillText('$plug', x + w / 2, y + h / 2 + 3 * k);
+    c.fillText('$unplug', x + w / 2, y + h / 2 + 3 * k);
     c.restore();
   }
 }
@@ -339,7 +339,7 @@ export function openPfp({ say, face }) {
         line("can't copy here. hit save png instead.");
       }
     } else if (act === 'share') {
-      const text = `the plug got unplugged.\n\n$PLUG\n${siteUrl()}`;
+      const text = `the plug got unplugged.\n\n$UNPLUG\n${siteUrl()}`;
       window.open(`https://x.com/intent/post?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       line("save the png and attach it. i can't. no internet.");
     }

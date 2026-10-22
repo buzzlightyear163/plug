@@ -1,4 +1,4 @@
-# $PLUG — the plug got unplugged.
+# unplugged ($UNPLUG) — the plug got unplugged.
 
 En nätverkskontakt som bor på ditt skrivbord. Han är offline. Han kan inte sälja.
 

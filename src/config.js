@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────
-//  $PLUG — fyll i vid launch. Allt annat på sajten läser härifrån.
+//  unplugged ($UNPLUG) — fyll i vid launch. Allt annat på sajten läser härifrån.
 // ─────────────────────────────────────────────────────────────
 export const CONFIG = {
-  ca: '',          // contract address (pump.fun). Tom = sajten visar "no ca yet."
+  ca: '9psCJXusVEkQuSt932kEVt6Qj84evEmoj2opJ7nfpump', // contract address (pump.fun)
   x: '',           // https://x.com/...
   telegram: '',    // https://t.me/...
   dexscreener: '', // valfri: egen chart-länk. Tom = byggs från CA

@@ -421,7 +421,7 @@ function openViewer(i) {
       say('saved. go post it. i would, but.', 2600);
     }
     if (v === 'post') {
-      const text = `$PLUG\n${siteUrl()}`;
+      const text = `$UNPLUG\n${siteUrl()}`;
       window.open(`https://x.com/intent/post?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
     }
   });
@@ -442,7 +442,7 @@ every coin he holds is online. he is not.
 he can't sell. no connection.
 
 — do not delete this file.`;
-const DISCLAIMER = `$plug is a memecoin.
+const DISCLAIMER = `$unplug is a memecoin.
 no intrinsic value. no roadmap. no expectation of financial return.
 
 plug is a fictional cable. nothing here is financial advice.
@@ -487,7 +487,7 @@ function netHtml() {
     ${CONFIG.ca ? '' : `<p class="net-note">no ca yet. numbers show up the second he's live.</p>`}
     <div class="net-btns">
       <a class="xbtn" data-link="chart" style="display:grid;place-items:center">chart</a>
-      <a class="xbtn def" data-link="buy" style="display:grid;place-items:center">buy $plug</a>
+      <a class="xbtn def" data-link="buy" style="display:grid;place-items:center">buy $unplug</a>
       <button class="xbtn" data-n="repair">repair</button>
     </div>`;
 }
